@@ -1,6 +1,6 @@
 import js from "@eslint/js";
 import globals from "globals";
-import prettier from "eslint-config-prettier";
+import prettierRecommended from "eslint-plugin-prettier/recommended";
 
 export default [
   js.configs.recommended,
@@ -11,12 +11,12 @@ export default [
       globals: { ...globals.node },
     },
     rules: {
-      "no-unused-vars": "warn",
-      "prefer-const": "warn",
-      // по заданию в коде есть debugger, поэтому разрешаем его
+      "no-unused-vars": "error",
+      "prefer-const": "error",
+      "no-var": "error",
+      eqeqeq: "error",
       "no-debugger": "off",
     },
   },
-  // Prettier ставим последним, чтобы правила оформления не спорили с ним
-  prettier,
+  prettierRecommended,
 ];
